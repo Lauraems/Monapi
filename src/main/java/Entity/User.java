@@ -1,33 +1,58 @@
 package Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
-//@Table(name = "user")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
-    //@Column(name = "nom")
-    private String nom, prenom, ville;
+    @Column
+    private String nom, prenom;
     private int age;
-    private String email;
-    private String role;
 
     public User () {  }
 
-    public User(Long idUser, String nom, String prenom, String ville, int age, String email, String role) {
+    public User(Long idUser, String nom, String prenom, int age) {
         this.idUser = idUser;
         this.nom = nom;
         this.prenom = prenom;
-        this.ville = ville;
         this.age = age;
-        this.email = email;
-        this.role = role;
     }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
 }

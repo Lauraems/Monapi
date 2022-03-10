@@ -1,5 +1,6 @@
 package Dao;
 
+import Entity.Adresse;
 import Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,8 +11,23 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u")
-    public List<User> donnerTousLesUser();
+    public List<User> findAllUsers();
 
-    @Query("select u from User u where u.age > :age ")
-    public List<User> donnerTousLesUserSelonLage(@Param(value = "age") int age);
+    @Query("select u.nom from User u")
+    List<String> findUsersByNom();
+
+    @Query("select u.prenom from User u")
+    List<String> findUsersByPrenom();
+
+    @Query("select u.nom from User u")
+    List<String> findUsersNomBy3Character();
+
+    @Query("select u.nom from User u")
+    List<String> findUsersNomByAgeImpair();
+
+    @Query("select u from Adresse u")
+    List<Adresse> findAllAdresse();
+
+    @Query("select u from Adresse u")
+    List<Adresse> findAdresseById();
 }
